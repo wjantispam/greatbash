@@ -14,11 +14,13 @@ There are some warnings in *[here](https://unix.stackexchange.com/questions/8539
 
 ## Review files recursively
 I had to get a snapshot of the files under a directory with their file datetime and sizes. I didn't know `tree` 
+
+    $ find /path/to/folder -type f -print0 | xargs -0 ls -l --time-style="+%F %T"
+    OR
     man tree
            -D     Print  the  date  of the last modification time or if -c is used, the last status change time for the file
               listed.
-    $ find /path/to/folder -type f -print0 | xargs -0 ls -l --time-style="+%F %T"
-OR
+
     $ tree -Dh --timefmt '%F %T' maintainable-bash/
     maintainable-bash/
     ├── [4.0K 2022-03-14 23:09:55]  0_pre-requisites
